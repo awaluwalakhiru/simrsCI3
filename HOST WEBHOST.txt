@@ -1,0 +1,6 @@
+username: awalprasetyo4@gmail.com
+password: 4w47d4nmemi2011
+host: localhost	
+pass: root1234
+db: id9638862_rumahsakit	
+user: id9638862_root

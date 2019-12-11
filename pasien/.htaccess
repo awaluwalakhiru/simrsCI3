@@ -1,0 +1,19 @@
+php_value display_errors On
+php_flag magic_quotes 1
+php_flag magic_quotes_gpc 1
+php_value mbstring.http_input auto
+php_value date.timezone Asia/Jakarta
+Options -Indexes
+
+<IfModule mod_setenvif.c>
+  <IfModule mod_headers.c>
+    # mod_headers, y u no match by Content-Type?!
+    <FilesMatch "\.(gif|png|jpe?g|svg|svgz|ico|webp)$">
+      SetEnvIf Origin ":" IS_CORS
+      Header set Access-Control-Allow-Origin "*" env=IS_CORS
+    </FilesMatch>
+    <FilesMatch "\.(ttf|ttc|otf|eot|woff|woff2|font.css|css|js)$">
+    Header set Access-Control-Allow-Origin "*"
+  </FilesMatch>
+  </IfModule>
+</IfModule>

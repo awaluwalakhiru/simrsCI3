@@ -10,5 +10,6 @@ class User extends MY_Controller
     public function index()
     {
         echo "ini halaman controller User/index level user";
+        echo anchor('auth/keluar', 'Keluar');
     }
 }

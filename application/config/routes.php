@@ -50,7 +50,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 |        my-controller/my-method    -> my_controller/my_method
  */
 $route['default_controller']   = 'auth/login_v';
-$route['404_override']         = '';
+$route['404_override']         = 'error404/error404_v';
 $route['translate_uri_dashes'] = false;
 
 // Route untuk auth
@@ -64,5 +64,5 @@ $route['auth/lupa_v']   = 'auth/forget_v';
 $route['auth/lupa']     = 'auth/forget';
 $route['auth/keluar']     = 'auth/logout';
 
-// routh dashboard
+// route dashboard
 $route['beranda'] = 'dashboard/data';

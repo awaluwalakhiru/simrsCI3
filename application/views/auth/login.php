@@ -26,11 +26,11 @@
                         <div class="card-body">
                             <?php echo form_open('auth/masuk', ['class' => 'needs-validation', 'novalidate' => '']); ?>
                             <div class="form-group">
-                                <label for="username">Username</label>
-                                <input id="username" type="text" class="form-control" name="username" value='<?php echo html_escape(set_value('username')); ?>' tabindex="1" required autofocus>
-                                <span class="text-danger"><?php echo form_error('username') ?></span>
+                                <label for="email">Email</label>
+                                <input id="email" type="text" class="form-control" name="email" value='<?php echo html_escape(set_value('email')); ?>' tabindex="1" required autofocus>
+                                <span class="text-danger"><?php echo form_error('email') ?></span>
                                 <div class="invalid-feedback">
-                                    Mohon isi username anda
+                                    Mohon isi email anda
                                 </div>
                             </div>
 
@@ -50,7 +50,7 @@
 
                             <div class="form-group">
                                 <label for="captcha_user">Captcha</label>
-                                <div class="mb-3 px-auto mx-auto">
+                                <div class="mb-3 px-lg-4 px-md-3">
                                     <?php echo $captcha['image'] ?>
                                 </div>
                                 <input type="hidden" name="captcha" value='<?php echo $captcha['word'] ?>'>

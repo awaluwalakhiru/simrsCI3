@@ -15,6 +15,7 @@ class Auth extends MY_Controller
 
     public function login_v()
     {
+        is_login();
         $data['judul']   = 'Login';
         $data['captcha'] = $this->make_captcha();
         $this->templates->load('auth/login', $data);
@@ -22,35 +23,45 @@ class Auth extends MY_Controller
 
     public function login()
     {
-        $this->load->library('encryption');
+        $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
+        $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[3]');
+        $this->form_validation->set_rules('captcha', 'Captcha', 'trim|required|matches[captcha_user]');
+        $this->form_validation->set_rules('captcha_user', 'Captcha anda', 'trim|required|matches[captcha]');
 
-        $captcha      = htmlspecialchars(html_escape($this->input->post('captcha', true)));
-        $captcha_user = htmlspecialchars(html_escape($this->input->post('captcha_user', true)));
-        $username     = htmlspecialchars(html_escape($this->input->post('username', true)));
-        $password     = htmlspecialchars(html_escape($this->input->post('password', true)));
-        $user_ip      = $this->input->ip_address();
+        if ($this->form_validation->run() == false) {
+            $this->login_v();
+        } else {
+            $captcha      = htmlspecialchars($this->input->post('captcha', true));
+            $captcha_user = htmlspecialchars($this->input->post('captcha_user', true));
+            $email     = htmlspecialchars($this->input->post('email', true));
+            $password     = $this->input->post('password', true);
 
-        $is_user            = $this->user_m->has_user($username);
-        $user_data          = $this->user_m->get_user($username);
-        $user_data_id       = $user_data->id;
-        $user_data_password = $user_data->password;
-        $user_time_login    = time();
-        $user_data_level    = $user_data->level;
+            $user_data          = $this->user_m->get_user($email);
+            $user_data_id = $user_data->id;
+            $user_data_email       = $user_data->email;
+            $user_data_username       = $user_data->username;
+            $user_data_password = $user_data->password;
+            $user_time_login    = time();
+            $user_data_level    = $user_data->level;
+            $user_data_online    = $user_data->online;
 
-        if ($is_user > 0) {
-            $match = password_verify($password, $user_data_password);
-            if ($match) {
-                if ($captcha_user == $captcha) {
-                    $this->session->set_userdata([
-                        'id'       => $user_data_id,
-                        'username' => $this->encryption->encrypt($username),
-                        'login'    => $user_time_login,
-                        'level'    => $user_data_level,
-                        'user_ip'  => $user_ip,
-                    ]);
+            if ($user_data_email != null) {
+                $match = password_verify($password, $user_data_password);
+
+                if ($match) {
                     $query = $this->user_m->user_login($user_data_id, $user_time_login);
+                    $this->delete_captcha();
 
                     if ($query > 0) {
+                        $this->session->set_userdata([
+                            'id'       => $user_data_id,
+                            'email'       => $user_data_email,
+                            'username' => $user_data_username,
+                            'login'    => $user_time_login,
+                            'level'    => $user_data_level,
+                            'online' => $user_data_online
+                        ]);
+
                         if ($user_data_level == 'admin') {
                             redirect('beranda');
                         } else {
@@ -67,22 +78,16 @@ class Auth extends MY_Controller
                     $this->session->set_userdata([
                         'alert' => 'danger',
                     ]);
-                    $this->session->set_flashdata('pesan', 'Captcha anda tidak cocok');
+                    $this->session->set_flashdata('pesan', 'Password anda tidak cocok');
                     redirect('auth');
                 }
             } else {
                 $this->session->set_userdata([
                     'alert' => 'danger',
                 ]);
-                $this->session->set_flashdata('pesan', 'Password anda tidak cocok');
+                $this->session->set_flashdata('pesan', 'Email ' . $email . ' belum terdaftar');
                 redirect('auth');
             }
-        } else {
-            $this->session->set_userdata([
-                'alert' => 'danger',
-            ]);
-            $this->session->set_flashdata('pesan', 'Username ' . $username . ' belum terdaftar');
-            redirect('auth');
         }
     }
 
@@ -105,8 +110,7 @@ class Auth extends MY_Controller
         $nama_belakang = htmlspecialchars($this->input->post('nama_belakang', true));
         $username      = htmlspecialchars($this->input->post('username', true));
         $email         = htmlspecialchars($this->input->post('email', true));
-        $password      = htmlspecialchars(password_hash($this->input->post('password', true), PASSWORD_DEFAULT));
-        $password2     = htmlspecialchars($this->input->post('password2', true));
+        $password      = password_hash($this->input->post('password', true), PASSWORD_DEFAULT);
         $input         = [
             'id'            => $id,
             'nama_depan'    => $nama_depan,
@@ -119,8 +123,8 @@ class Auth extends MY_Controller
 
         $this->form_validation->set_rules('nama_depan', 'Nama depan', 'trim|required|min_length[3]');
         $this->form_validation->set_rules('nama_belakang', 'Nama belakang', 'trim|required|min_length[3]');
-        $this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[3]|is_unique[tb_user.username]');
-        $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
+        $this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[3]');
+        $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[tb_user.email]');
         $this->form_validation->set_rules('password', 'Password', 'trim|required|matches[password2]');
         $this->form_validation->set_rules('password2', 'Konfirmasi password', 'trim|required|matches[password]');
 
@@ -147,7 +151,65 @@ class Auth extends MY_Controller
     public function reset_v()
     {
         $data['judul'] = 'Reset';
-        $this->templates->load('auth/reset', $data);
+        $this->templates->load('auth/reset', $data, 'register', 'register');
+    }
+
+    public function reset()
+    {
+        $email = $this->input->post('email', true);
+        $token = $this->input->post('token', true);
+        $password = password_hash($this->input->post('password', true), PASSWORD_DEFAULT);
+        $user_data = $this->user_m->get_user_token($email);
+
+        $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[3]|matches[password2]');
+        $this->form_validation->set_rules('password2', 'Konfirmasi password', 'trim|required|matches[password]');
+
+        if ($this->form_validation->run() == false) {
+            $this->reset_v();
+        } else {
+            if ($user_data != null) {
+                $user_token = $this->user_m->get_user_token($email)->token;
+
+                if ($user_token == $token) {
+                    $user_token_created = $user_data->created;
+                    $selisih = time() - $user_token_created;
+
+                    if ($selisih < (60 * 60)) {
+                        $reset_password = $this->user_m->update_password_user($email, $password);
+
+                        if ($reset_password > 0) {
+                            $this->session->set_userdata([
+                                'alert' => 'success',
+                            ]);
+                            $this->session->set_flashdata('pesan', 'Selamat password anda telah direset');
+                            $this->user_m->delete_token($email, $token);
+                        } else {
+                            $this->session->set_userdata([
+                                'alert' => 'danger',
+                            ]);
+                            $this->session->set_flashdata('pesan', 'Maaf password anda gagal direset');
+                        }
+                    } else {
+                        $this->session->set_userdata([
+                            'alert' => 'danger',
+                        ]);
+                        $this->session->set_flashdata('pesan', 'Maaf token anda telah kadaluarsa');
+                        $this->user_m->delete_token($email, $token);
+                    }
+                } else {
+                    $this->session->set_userdata([
+                        'alert' => 'danger',
+                    ]);
+                    $this->session->set_flashdata('pesan', 'Maaf token anda tidak sesuai');
+                }
+            } else {
+                $this->session->set_userdata([
+                    'alert' => 'danger',
+                ]);
+                $this->session->set_flashdata('pesan', 'Maaf email tidak sesuai atau belum terdaftar');
+            }
+            redirect('auth/balik_v');
+        }
     }
 
     public function forget_v()
@@ -165,10 +227,30 @@ class Auth extends MY_Controller
         if ($this->form_validation->run() == false) {
             $this->forget_v();
         } else {
-            $this->session->set_userdata([
-                'alert' => 'success',
-            ]);
-            $this->session->set_flashdata('pesan', 'Reset link telah dikirim');
+            $token = base64_encode(random_bytes(16));
+
+            $judul = 'Halaman reset password';
+            $isi = 'Mohon klik tautan berikut untuk reset password anda <a href="' . site_url() . 'auth/balik_v?email=' . $email . '&token=' . urlencode($token) . '">Klik disini</a>';
+
+            $this->user_m->insert_token($email, $token);
+
+            $this->load->library('email');
+            $this->email->from('awalp8627@gmail.com', 'Admin SIMRS');
+            $this->email->to($email);
+            $this->email->subject($judul);
+            $this->email->message($isi);
+
+            if (!$this->email->send()) {
+                $this->session->set_userdata([
+                    'alert' => 'danger',
+                ]);
+                $this->session->set_flashdata('pesan', 'Reset link gagal dikirim');
+            } else {
+                $this->session->set_userdata([
+                    'alert' => 'success',
+                ]);
+                $this->session->set_flashdata('pesan', 'Reset link telah dikirim');
+            }
             redirect('auth/lupa_v');
         }
     }
@@ -180,7 +262,7 @@ class Auth extends MY_Controller
             'img_path'    => './captcha/',
             'img_url'     => base_url() . 'captcha',
             'font_path'   => './assets/fonts/nunito-v9-latin-regular.ttf',
-            'img_width'   => '280',
+            'img_width'   => '240',
             'img_height'  => 45,
             'expiration'  => 7200,
             'word_length' => 8,
@@ -201,22 +283,28 @@ class Auth extends MY_Controller
         return $cap;
     }
 
-    public function delete_captcha()
+    private function delete_captcha()
     {
-        delete_files('./captcha/');
+        delete_files('./captcha/', true, true);
     }
 
-    public function delete_cache()
+    private function delete_cache()
     {
-        delete_files('./application/cache/');
+        delete_files('./application/cache/', true, true);
     }
 
     public function logout()
     {
-        $this->session->sess_destroy();
-        $_SESSION = [];
-        session_destroy();
-        session_unset();
-        redirect('auth');
+        $user_data_id = $this->session->userdata('id');
+        $user_time_logout = time();
+        $query = $this->user_m->user_logout($user_data_id, $user_time_logout);
+
+        if ($query > 0) {
+            $this->session->sess_destroy();
+            $_SESSION = [];
+            session_destroy();
+            session_unset();
+            redirect('auth');
+        }
     }
 }
