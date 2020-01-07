@@ -12,41 +12,60 @@
                             <h4>Reset Password</h4>
                         </div>
 
-                        <div class="card-body">
-                            <p class="text-muted">We will send a link to reset your password</p>
-                            <form method="POST">
-                                <div class="form-group">
-                                    <label for="email">Email</label>
-                                    <input id="email" type="email" class="form-control" name="email" tabindex="1" required autofocus>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="password">New Password</label>
-                                    <input id="password" type="password" class="form-control pwstrength" data-indicator="pwindicator" name="password" tabindex="2" required>
-                                    <div id="pwindicator" class="pwindicator">
-                                        <div class="bar"></div>
-                                        <div class="label"></div>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="password-confirm">Confirm Password</label>
-                                    <input id="password-confirm" type="password" class="form-control" name="confirm-password" tabindex="2" required>
-                                </div>
-
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
-                                        Reset Password
+                        <?php if ($this->session->flashdata('pesan')) : ?>
+                            <span class="alert mx-3 mb-0 alert-<?php echo $this->session->userdata('alert'); ?> alert-dismissible show fade">
+                                <div class="alert-body">
+                                    <button class="close" data-dismiss="alert">
+                                        <span>&times;</span>
                                     </button>
+                                    <strong><?php echo $this->session->flashdata('pesan'); ?></strong>
                                 </div>
+                            </span>
+                        <?php endif; ?>
+
+                        <div class="card-body">
+                            <p class="text-muted">Mohon isi password baru untuk mereset password lama anda</p>
+                            <?php echo form_open('auth/balik', ['class' => 'needs-validation', 'novalidate' => '']) ?>
+                            <div class="form-group">
+                                <input type="hidden" name="email" value="<?php echo htmlspecialchars($this->input->get('email', true)) ?>">
+                                <input type="hidden" name="token" value="<?php echo htmlspecialchars($this->input->get('token', true)) ?>">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password">Password baru</label>
+                                <input id="password" type="password" class="form-control pwstrength" data-indicator="pwindicator" name="password" tabindex="1" required autofocus>
+                                <span class="text-danger"><?php echo form_error('password') ?></span>
+                                <div class="invalid-feedback">
+                                    Mohon isi password anda
+                                </div>
+                                <div id="pwindicator" class="pwindicator">
+                                    <div class="bar"></div>
+                                    <div class="label"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password2">Konfirmasi Password</label>
+                                <input id="password2" type="password" class="form-control" name="password2" tabindex="2" required autofocus>
+                                <span class="text-danger"><?php echo form_error('password2') ?></span>
+                                <div class="invalid-feedback">
+                                    Mohon isi konfirmasi password
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="3">
+                                    Reset Password
+                                </button>
+                            </div>
                             </form>
                         </div>
                     </div>
                     <div class="mt-5 text-muted text-center">
-                        Tidak punya akun? <?php echo anchor(site_url('auth/daftar', 'Daftar')) ?>
+                        Tidak punya akun? <?php echo anchor('auth/daftar', 'Daftar') ?>
                     </div>
-                    <div class="mt-5 text-muted text-center">
-                        Sudah punya akun? <?php echo site_url('auth', 'Masuk') ?>
+                    <div class="text-muted text-center">
+                        Sudah punya akun? <?php echo anchor('auth', 'Masuk') ?>
                     </div>
                     <div class="simple-footer">
                         Copyright &copy; Awal Prasetyo 2019

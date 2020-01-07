@@ -26,11 +26,11 @@
                         <div class="card-body">
                             <?php echo form_open('auth/masuk', ['class' => 'needs-validation', 'novalidate' => '']); ?>
                             <div class="form-group">
-                                <label for="username">Username</label>
-                                <input id="username" type="text" class="form-control" name="username" value='<?php echo html_escape(set_value('username')); ?>' tabindex="1" required autofocus>
-                                <span class="text-danger"><?php echo form_error('username') ?></span>
+                                <label for="email">Email</label>
+                                <input id="email" type="text" class="form-control" name="email" value='<?php echo html_escape(set_value('email')); ?>' tabindex="1" required autofocus>
+                                <span class="text-danger"><?php echo form_error('email'); ?></span>
                                 <div class="invalid-feedback">
-                                    Mohon isi username anda
+                                    Mohon isi email anda
                                 </div>
                             </div>
 
@@ -42,7 +42,7 @@
                                     </div>
                                 </div>
                                 <input id="password" type="password" class="form-control" name="password" value="<?php echo html_escape(set_value('password')); ?>" tabindex="2" required autofocus>
-                                <span class="text-danger"><?php echo form_error('password') ?></span>
+                                <span class="text-danger"><?php echo form_error('password'); ?></span>
                                 <div class="invalid-feedback">
                                     Mohon isi password anda
                                 </div>
@@ -50,12 +50,11 @@
 
                             <div class="form-group">
                                 <label for="captcha_user">Captcha</label>
-                                <div class="mb-3 px-auto mx-auto">
-                                    <?php echo $captcha['image'] ?>
+                                <div class="mb-3 px-lg-4 px-md-3">
+                                    <?php echo $image ?>
                                 </div>
-                                <input type="hidden" name="captcha" value='<?php echo $captcha['word'] ?>'>
-                                <input id="captcha_user" type="text" class="form-control" name="captcha_user" value='<?php echo html_escape(set_value('captcha_user')); ?>' tabindex="3" required autofocus>
-                                <span class="text-danger"><?php echo form_error('captcha_user') ?></span>
+                                <input id="captcha_user" type="text" class="form-control" name="captcha" value='<?php echo html_escape(set_value('captcha')); ?>' tabindex="3" required autofocus>
+                                <span class="text-danger"><?php echo form_error('captcha'); ?></span>
                                 <div class="invalid-feedback">
                                     Mohon isi captcha
                                 </div>

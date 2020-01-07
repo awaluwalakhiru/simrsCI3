@@ -2,8 +2,6 @@
 
 class MY_Controller extends CI_Controller
 {
-    protected $model;
-
     public function __construct()
     {
         parent::__construct();

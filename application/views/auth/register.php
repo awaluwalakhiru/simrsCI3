@@ -98,7 +98,7 @@
                         </div>
                     </div>
                     <div class="mt-5 text-muted text-center">
-                        Sudah punya akun? <?php echo anchor(site_url('auth'), 'Masuk') ?>
+                        Sudah punya akun? <?php echo anchor('auth', 'Masuk') ?>
                     </div>
                     <div class="simple-footer">
                         Copyright &copy; Awal Prasetyo 2019

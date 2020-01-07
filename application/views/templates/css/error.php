@@ -1,0 +1,1 @@
+<link rel="stylesheet" href="<?php echo base_url() ?>assets/modules/izitoast/css/iziToast.min.css">
