@@ -12,6 +12,7 @@ class User extends MY_Controller
 
     public function profile()
     {
+<<<<<<< HEAD
         $data['title'] = 'User';
         $email = $this->session->userdata('email');
         $data['user'] = $this->user_m->get_user($email);
@@ -82,5 +83,9 @@ class User extends MY_Controller
                 redirect('user/bio');
             }
         }
+=======
+        echo "ini halaman controller User/index level user";
+        echo anchor('auth/keluar', 'Keluar');
+>>>>>>> f2a6d8f63ca989c96c3542592626967af8149708
     }
 }

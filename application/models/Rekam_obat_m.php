@@ -1,4 +1,5 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');
+<<<<<<< HEAD
 
 class Rekam_obat_m extends MY_Model
 {
@@ -19,3 +20,5 @@ class Rekam_obat_m extends MY_Model
         return $this->db->get_where($this->table_rekam_medis_obat, ['id_rekam_medis' => $id])->result();
     }
 }
+=======
+>>>>>>> f2a6d8f63ca989c96c3542592626967af8149708

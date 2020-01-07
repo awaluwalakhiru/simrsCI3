@@ -6,17 +6,21 @@ class Rekam_m extends MY_Model
     {
         parent::__construct();
         $this->table_rekam_medis = 'tb_rekam_medis';
+<<<<<<< HEAD
         $this->table_pasien = 'tb_pasien';
         $this->table_dokter = 'tb_dokter';
         $this->table_poliklinik = 'tb_poliklinik';
         $this->table_obat = 'tb_obat';
         $this->table_rekam_medis_obat = 'tb_rekam_medis_obat';
+=======
+>>>>>>> f2a6d8f63ca989c96c3542592626967af8149708
     }
 
     public function count_rekam()
     {
         return $this->db->get($this->table_rekam_medis)->num_rows();
     }
+<<<<<<< HEAD
 
     public function get_by_id_rekam_medis($id)
     {
@@ -68,4 +72,6 @@ class Rekam_m extends MY_Model
         $this->db->update($this->table_rekam_medis, $data, ['id_rekam_medis' => $id]);
         return $this->db->affected_rows();
     }
+=======
+>>>>>>> f2a6d8f63ca989c96c3542592626967af8149708
 }

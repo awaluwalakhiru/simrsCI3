@@ -16,7 +16,10 @@
 <script src="<?php echo base_url() ?>assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
 <script src="<?php echo base_url() ?>assets/modules/moment.min.js"></script>
 <script src="<?php echo base_url() ?>assets/js/stisla.js"></script>
+<<<<<<< HEAD
 <script src="<?php echo base_url() ?>assets/modules/sweetalert/sweetalert.min.js"></script>
+=======
+>>>>>>> f2a6d8f63ca989c96c3542592626967af8149708
 
 <!-- JS Libraies -->
 <?php echo $js; ?>
@@ -28,4 +31,8 @@
 
 </body>
 
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> f2a6d8f63ca989c96c3542592626967af8149708

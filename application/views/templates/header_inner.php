@@ -38,7 +38,10 @@
     <!-- CSS Libraries -->
     <?php echo $css ?>
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> f2a6d8f63ca989c96c3542592626967af8149708
     <!-- Template CSS -->
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/style.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/components.css">
@@ -69,10 +72,17 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
                             <div class="dropdown-title">Masuk <?php echo $login ?> lalu</div>
+<<<<<<< HEAD
                             <a href="<?php echo base_url('user/bio'); ?>" class="dropdown-item has-icon">
                                 <i class="far fa-user"></i> Profile
                             </a>
                             <a href="<?php echo base_url('user/atur'); ?>" class="dropdown-item has-icon">
+=======
+                            <a href="features-profile.html" class="dropdown-item has-icon">
+                                <i class="far fa-user"></i> Profile
+                            </a>
+                            <a href="features-settings.html" class="dropdown-item has-icon">
+>>>>>>> f2a6d8f63ca989c96c3542592626967af8149708
                                 <i class="fas fa-cog"></i> Settings
                             </a>
                             <div class="dropdown-divider"></div>
@@ -86,6 +96,7 @@
             <div class="main-sidebar sidebar-style-2">
                 <aside id="sidebar-wrapper">
                     <div class="sidebar-brand">
+<<<<<<< HEAD
                         <a href="<?php echo site_url() ?>">SIMRS</a>
                     </div>
                     <div class="sidebar-brand sidebar-brand-sm">
@@ -154,5 +165,64 @@
                         <i class="fas fa-sign-out-alt"></i>Keluar
                     </a>
                 </div>
+=======
+                        <a href="index.html">SIMRS</a>
+                    </div>
+                    <div class="sidebar-brand sidebar-brand-sm">
+                        <a href="index.html">APP</a>
+                    </div>
+                    <ul class="sidebar-menu">
+                        <li class="menu-header">Dashboard</li>
+                        <li class="dropdown <?php echo ($title == 'Dashboard') ? 'active' : ''; ?>">
+                            <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Beranda</span></a>
+                            <ul class="dropdown-menu">
+                                <li><a class="nav-link" href="index-0.html">Data Beranda</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-header">Dokter</li>
+                        <li class="dropdown">
+                            <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>
+                                <span>Data Dokter</span></a>
+                            <ul class="dropdown-menu">
+                                <li><a class="nav-link" href="layout-default.html">Data Dokter</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-header">Pasien</li>
+                        <li class="dropdown">
+                            <a href="#" class="nav-link has-dropdown"><i class="fas fa-th-large"></i> <span>Data Pasien</span></a>
+                            <ul class="dropdown-menu">
+                                <li><a class="nav-link" href="components-article.html">Data Pasien</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-header">Poliklinik</li>
+                        <li class="dropdown">
+                            <a href="#" class="nav-link has-dropdown"><i class="far fa-user"></i> <span>Data Poliklinik</span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="auth-forgot-password.html">Data Poliklinik</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-header">Obat</li>
+                        <li class="dropdown">
+                            <a href="#" class="nav-link has-dropdown"><i class="fas fa-th-large"></i> <span>Data Obat</span></a>
+                            <ul class="dropdown-menu">
+                                <li><a class="nav-link" href="components-article.html">Data Obat</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-header">Rekam Medis</li>
+                        <li class="dropdown">
+                            <a href="#" class="nav-link has-dropdown"><i class="fas fa-th-large"></i> <span>Data Rekam Medis</span></a>
+                            <ul class="dropdown-menu">
+                                <li><a class="nav-link" href="components-article.html">Data Rekam Medis</a></li>
+                            </ul>
+                        </li>
+                        <li><a class="nav-link" href="credits.html"><i class="fas fa-pencil-ruler"></i> <span>Credits</span></a>
+                        </li>
+                    </ul>
+                    <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
+                        <a href="<?php echo site_url('auth/keluar') ?>" class="logout btn btn-primary btn-lg btn-block btn-icon-split">
+                            <i class="fas fa-sign-out-alt"></i>Keluar
+                        </a>
+                    </div>
+>>>>>>> f2a6d8f63ca989c96c3542592626967af8149708
                 </aside>
             </div>

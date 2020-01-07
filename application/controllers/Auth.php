@@ -294,12 +294,12 @@ class Auth extends MY_Controller
         }
     }
 
-    public function delete_captcha()
+    private function delete_captcha()
     {
         delete_files('./captcha/', true, true);
     }
 
-    public function delete_cache()
+    private function delete_cache()
     {
         delete_files('./application/cache/', true, true);
     }

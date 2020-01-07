@@ -28,7 +28,11 @@
                             <div class="form-group">
                                 <label for="email">Email</label>
                                 <input id="email" type="text" class="form-control" name="email" value='<?php echo html_escape(set_value('email')); ?>' tabindex="1" required autofocus>
+<<<<<<< HEAD
                                 <span class="text-danger"><?php echo form_error('email'); ?></span>
+=======
+                                <span class="text-danger"><?php echo form_error('email') ?></span>
+>>>>>>> f2a6d8f63ca989c96c3542592626967af8149708
                                 <div class="invalid-feedback">
                                     Mohon isi email anda
                                 </div>
@@ -51,7 +55,11 @@
                             <div class="form-group">
                                 <label for="captcha_user">Captcha</label>
                                 <div class="mb-3 px-lg-4 px-md-3">
+<<<<<<< HEAD
                                     <?php echo $image ?>
+=======
+                                    <?php echo $captcha['image'] ?>
+>>>>>>> f2a6d8f63ca989c96c3542592626967af8149708
                                 </div>
                                 <input id="captcha_user" type="text" class="form-control" name="captcha" value='<?php echo html_escape(set_value('captcha')); ?>' tabindex="3" required autofocus>
                                 <span class="text-danger"><?php echo form_error('captcha'); ?></span>

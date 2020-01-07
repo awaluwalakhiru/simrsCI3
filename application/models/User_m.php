@@ -20,11 +20,14 @@ class User_m extends MY_Model
         return $this->db->get_where($this->table_user, ['email' => $data])->row();
     }
 
+<<<<<<< HEAD
     public function get_users()
     {
         return $this->db->get($this->table_user)->result();
     }
 
+=======
+>>>>>>> f2a6d8f63ca989c96c3542592626967af8149708
     public function get_user_token($data)
     {
         return $this->db->get_where($this->table_user_token, ['email' => $data])->row();
@@ -73,12 +76,15 @@ class User_m extends MY_Model
             'password' => $password
         ];
         $this->db->update($this->table_user, $data, ['email' => $email]);
+<<<<<<< HEAD
         return $this->db->affected_rows();
     }
 
     public function update_user($id, $data)
     {
         $this->db->update($this->table_user, $data, ['id' => $id]);
+=======
+>>>>>>> f2a6d8f63ca989c96c3542592626967af8149708
         return $this->db->affected_rows();
     }
 }
