@@ -1,8 +1,4 @@
-<?php
-
-use phpDocumentor\Reflection\Types\This;
-
-defined('BASEPATH') or exit('No direct script access allowed');
+<?php defined('BASEPATH') or exit('No direct script access allowed');
 
 class Dokter_m extends MY_Model
 {

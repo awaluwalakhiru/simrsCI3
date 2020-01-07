@@ -74,7 +74,7 @@ $active_group = 'default';
 $query_builder = true;
 
 $db['default'] = array(
-    'dsn'	=> '',
+    'dsn'    => '',
     'hostname' => 'localhost',
     'username' => 'root',
     'password' => 'root',
@@ -82,7 +82,7 @@ $db['default'] = array(
     'dbdriver' => 'mysqli',
     'dbprefix' => '',
     'pconnect' => false,
-    'db_debug' => (ENVIRONMENT !== 'production'),
+    'db_debug' => (ENVIRONMENT !== 'development'),
     'cache_on' => false,
     'cachedir' => '',
     'char_set' => 'utf8',

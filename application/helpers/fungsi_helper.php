@@ -1,4 +1,5 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');
+
 function is_login()
 {
     $CI = &get_instance();

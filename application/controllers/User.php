@@ -28,13 +28,9 @@ class User extends MY_Controller
 
     public function update()
     {
-        // var_dump($this->input->post());
-        // var_dump($_FILES);
-        // die;
         if ($_FILES['foto']['name'] != 'default.png' && $_FILES['foto']['name'] != '') {
             $id = html_escape($this->encryption->decrypt($this->input->post('id', true)));
-            // var_dump($id);
-            // die;
+
             $data = [
                 'nama_depan' => html_escape($this->input->post('nama_depan', true)),
                 'nama_belakang' => html_escape($this->input->post('nama_belakang', true)),
@@ -52,13 +48,11 @@ class User extends MY_Controller
                 $config['allowed_types']        = 'gif|jpg|png';
                 $config['max_size']             = 1000;
                 $config['encrypt_name']         = true;
-                // $config['max_width']         = 500;
-                // $config['max_height']         = 500;
+                $config['file_ext_tolower']     = true;
 
                 $this->load->library('upload', $config);
 
                 if (!$this->upload->do_upload('foto')) {
-                    // var_dump($this->upload->display_errors());
                     $this->session->set_userdata([
                         'alert' => 'danger',
                     ]);
@@ -66,12 +60,14 @@ class User extends MY_Controller
                 } else {
                     $email = html_escape($this->session->userdata('email'));
                     $old_foto = $this->user_m->get_user($email)->foto;
+
                     unlink('./assets/img/avatar/' . $old_foto);
+
                     $data = [
                         'foto' => $this->upload->data('file_name')
                     ];
                     $this->user_m->update_user($id, $data);
-                    // var_dump($this->upload->data());
+
                     $this->session->set_userdata([
                         'alert' => 'success',
                     ]);

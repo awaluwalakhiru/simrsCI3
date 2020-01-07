@@ -30,9 +30,9 @@ class Auth extends MY_Controller
         $this->form_validation->set_rules('captcha', 'Captcha', 'trim|required|min_length[8]|callback_check_captcha');
 
         if ($this->form_validation->run() === false) {
-            $this->session->unset_userdata('captcha_word');
             $this->login_v();
         } else {
+            $this->session->unset_userdata('captcha_word');
 
             $email     = htmlspecialchars($this->input->post('email', true));
             $user_data          = $this->user_m->get_user($email);
