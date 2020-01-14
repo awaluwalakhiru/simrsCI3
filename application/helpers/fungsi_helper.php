@@ -20,7 +20,6 @@ function is_not_login()
     if (!$online) {
         redirect('auth');
     }
-<<<<<<< HEAD
 }
 
 function is_admin()
@@ -47,6 +46,4 @@ function is_not_admin()
     if ($admin !== 'admin') {
         redirect('dokter');
     }
-=======
->>>>>>> f2a6d8f63ca989c96c3542592626967af8149708
 }

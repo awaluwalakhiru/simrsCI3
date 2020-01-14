@@ -118,7 +118,7 @@ class Pasien extends MY_Controller
         ];
 
         $query = $this->pasien_m->update($id, $data);
-        if ($query > 0) {
+        if ($query >= 0) {
             $this->session->set_userdata([
                 'alert' => 'success',
             ]);

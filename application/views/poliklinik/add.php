@@ -30,7 +30,6 @@
                             <?php endif; ?>
                         </div>
                     </div>
-                    <!-- <form action="proses.php" method="post" class="needs-validation" novalidate=""> -->
                     <?php echo form_open('poliklinik/tambah', ['class' => 'needs-validation', 'novalidate' => '']); ?>
                     <div class="card-body pt-0">
                         <section class="justify-content-center">

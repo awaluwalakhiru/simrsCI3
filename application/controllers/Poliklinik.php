@@ -101,7 +101,7 @@ class Poliklinik extends MY_Controller
             ];
             $query = $this->poliklinik_m->update_poliklinik($this->encryption->decrypt($id[$i]), $data);
         }
-        if ($query > 0) {
+        if ($query >= 0) {
             $this->session->set_userdata([
                 'alert' => 'success',
             ]);

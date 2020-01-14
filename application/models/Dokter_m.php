@@ -12,7 +12,6 @@ class Dokter_m extends MY_Model
     {
         return $this->db->get($this->table_dokter)->num_rows();
     }
-<<<<<<< HEAD
 
     public function get_dokter()
     {
@@ -41,6 +40,5 @@ class Dokter_m extends MY_Model
         $this->db->update($this->table_dokter, $data, ['id_dokter' => $id]);
         return $this->db->affected_rows();
     }
-=======
->>>>>>> f2a6d8f63ca989c96c3542592626967af8149708
+
 }

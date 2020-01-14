@@ -26,26 +26,11 @@
                                          <p>by @mdo and @fat</p>
                                      </div>
                                  </div>
-
-                                 <div class="media">
-                                     <div class="media-icon"><i class="far fa-circle"></i></div>
-                                     <div class="media-body">
-                                         <h6>Bootstrap Date Range</h6>
-                                         <p>by Dan Grossman</p>
-                                     </div>
-                                 </div>
                                  <div class="media">
                                      <div class="media-icon"><i class="far fa-circle"></i></div>
                                      <div class="media-body">
                                          <h6>Bootstrap Social Button</h6>
                                          <p>by Panayiotis Lipiridis</p>
-                                     </div>
-                                 </div>
-                                 <div class="media">
-                                     <div class="media-icon"><i class="far fa-circle"></i></div>
-                                     <div class="media-body">
-                                         <h6>Timepicker</h6>
-                                         <p>by @jdewit</p>
                                      </div>
                                  </div>
                                  <div class="media">
@@ -79,14 +64,6 @@
                                  <div class="media">
                                      <div class="media-icon"><i class="far fa-circle"></i></div>
                                      <div class="media-body">
-                                         <h6>Full Calendar</h6>
-                                         <p>by Adam Shaw</p>
-                                     </div>
-                                 </div>
-
-                                 <div class="media">
-                                     <div class="media-icon"><i class="far fa-circle"></i></div>
-                                     <div class="media-body">
                                          <h6>jQuery</h6>
                                          <p>by The jQuery Foundation</p>
                                      </div>
@@ -105,7 +82,6 @@
                                          <p>by Leonardo Santos</p>
                                      </div>
                                  </div>
-
                                  <div class="media">
                                      <div class="media-icon"><i class="far fa-circle"></i></div>
                                      <div class="media-body">
@@ -113,14 +89,6 @@
                                          <p>by InuYaksa</p>
                                      </div>
                                  </div>
-                                 <div class="media">
-                                     <div class="media-icon"><i class="far fa-circle"></i></div>
-                                     <div class="media-body">
-                                         <h6>OwlCarousel</h6>
-                                         <p>by David Deutsch</p>
-                                     </div>
-                                 </div>
-
                                  <div class="media">
                                      <div class="media-icon"><i class="far fa-circle"></i></div>
                                      <div class="media-body">
@@ -135,22 +103,6 @@
                                          <p>by Dolce</p>
                                      </div>
                                  </div>
-                                 <div class="media">
-                                     <div class="media-icon"><i class="far fa-circle"></i></div>
-                                     <div class="media-body">
-                                         <h6>Upload Preview</h6>
-                                         <p>by Opoloo</p>
-                                     </div>
-                                 </div>
-
-                                 <div class="media">
-                                     <div class="media-icon"><i class="far fa-circle"></i></div>
-                                     <div class="media-body">
-                                         <h6>Chart.JS</h6>
-                                         <p>by Nick Downie</p>
-                                     </div>
-                                 </div>
-
                                  <div class="media">
                                      <div class="media-icon"><i class="far fa-circle"></i></div>
                                      <div class="media-body">

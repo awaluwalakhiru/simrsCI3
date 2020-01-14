@@ -12,9 +12,6 @@ class Error404 extends MY_Controller
     {
         $data['judul'] = '404 Not Found Page';
         $this->templates->load('errors/error404', $data, 'error', 'error');
-<<<<<<< HEAD
         $this->output->cache(1);
-=======
->>>>>>> f2a6d8f63ca989c96c3542592626967af8149708
     }
 }

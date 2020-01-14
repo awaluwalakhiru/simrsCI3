@@ -1,5 +1,4 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');
-<<<<<<< HEAD
 
 class Poliklinik_m extends MY_Model
 {
@@ -37,5 +36,4 @@ class Poliklinik_m extends MY_Model
         return $this->db->affected_rows();
     }
 }
-=======
->>>>>>> f2a6d8f63ca989c96c3542592626967af8149708
+

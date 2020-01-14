@@ -2,13 +2,10 @@
 
 class Obat_m extends MY_Model
 {
-<<<<<<< HEAD
     public $column_order = [null, 'nama_obat', 'ket_obat'];
     public $column_search = ['nama_obat', 'ket_obat'];
     public $order = ['id_obat' => 'asc'];
 
-=======
->>>>>>> f2a6d8f63ca989c96c3542592626967af8149708
     public function __construct()
     {
         parent::__construct();
@@ -19,7 +16,6 @@ class Obat_m extends MY_Model
     {
         return $this->db->get($this->table_obat)->num_rows();
     }
-<<<<<<< HEAD
 
     public function get_all_obat()
     {
@@ -94,6 +90,5 @@ class Obat_m extends MY_Model
         $this->db->delete($this->table_obat, ['id_obat' => $id]);
         return $this->db->affected_rows();
     }
-=======
->>>>>>> f2a6d8f63ca989c96c3542592626967af8149708
+
 }

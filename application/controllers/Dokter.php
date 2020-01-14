@@ -125,7 +125,7 @@ class Dokter extends MY_Controller
         ];
 
         $query = $this->dokter_m->edit_dokter($id, $data);
-        if ($query > 0) {
+        if ($query >= 0) {
             $this->session->set_userdata([
                 'alert' => 'success',
             ]);

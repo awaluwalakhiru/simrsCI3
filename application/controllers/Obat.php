@@ -108,7 +108,7 @@ class Obat extends MY_Controller
         ];
 
         $query = $this->obat_m->update_obat($id, $data);
-        if ($query > 0) {
+        if ($query >= 0) {
             $this->session->set_userdata([
                 'alert' => 'success',
             ]);

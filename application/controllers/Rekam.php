@@ -169,7 +169,7 @@ class Rekam extends MY_Controller
 
         $query = $this->rekam_m->update_rekam_medis($id_rekam_medis, $data);
 
-        if ($query > 0) {
+        if ($query >= 0) {
             for ($i = 0; $i < count($id_rekam_obats); $i++) {
                 $this->rekam_obat_m->update_rekam_obat($id_rekam_obats[$i], ['id_obat' => $obats[$i]]);
             }

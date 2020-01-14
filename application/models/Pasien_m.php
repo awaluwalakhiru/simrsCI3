@@ -2,13 +2,10 @@
 
 class Pasien_m extends MY_Model
 {
-<<<<<<< HEAD
     public $column_order = [null, 'nomor_identitas', 'nama_pasien', 'jenis_kelamin', 'alamat', 'no_telepon'];
     public $column_search = ['nomor_identitas', 'nama_pasien', 'jenis_kelamin', 'alamat', 'no_telepon'];
     public $order = ['id_pasien' => 'asc'];
 
-=======
->>>>>>> f2a6d8f63ca989c96c3542592626967af8149708
     public function __construct()
     {
         parent::__construct();
@@ -27,7 +24,6 @@ class Pasien_m extends MY_Model
         $this->db->limit(5);
         return $this->db->get($this->table_pasien)->result();
     }
-<<<<<<< HEAD
 
     private function _get_datatables_query()
     {
@@ -102,6 +98,4 @@ class Pasien_m extends MY_Model
     {
         return $this->db->get($this->table_pasien)->result();
     }
-=======
->>>>>>> f2a6d8f63ca989c96c3542592626967af8149708
 }

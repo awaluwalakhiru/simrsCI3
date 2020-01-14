@@ -3,3 +3,7 @@ RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php/$1 [L]
+
+<FilesMatch ".(eot|otf|ttf|woff|woff2)">
+    Header always set Access-Control-Allow-Origin "*"
+</FilesMatch>

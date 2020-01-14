@@ -24,6 +24,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 |
 */
 $config['base_url'] = 'http://localhost/simrs/';
+// $config['base_url'] = 'http://myapp.orgfree.com/';
 
 /*
 |--------------------------------------------------------------------------

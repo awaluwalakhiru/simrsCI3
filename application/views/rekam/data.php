@@ -66,9 +66,9 @@
                                             <td><?php echo $g->diagnosa; ?></td>
                                             <td><?php echo html_escape($g->tanggal_periksa); ?></td>
                                             <td><?php $id_rekam_medis = $g->id_rekam_medis;
-                                                    $obat = $this->rekam_m->rekam_obat_join($id_rekam_medis);
+                                                    $obat = $this->rekam_m->rekam_obat_join($g->id_rekam_medis);
                                                     foreach ($obat as $o) {
-                                                        echo $o->nama_obat . "<br/>";
+                                                        echo $o->nama_obat . " ";
                                                     }
                                                     ?>
                                             </td>

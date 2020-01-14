@@ -9,7 +9,7 @@
 
 $(window).on('load', function () {
     $('.loading').fadeOut('slow');
-})
+});
 
 $(function () {
     $(document).on('click', '.logout', function (e) {
@@ -36,16 +36,11 @@ $(function () {
                     swal('Anda tidak jadi keluar', {
                         icon: 'info',
                         buttons: false,
-<<<<<<< HEAD
                         timer: 2000
-=======
-                        timer: 3000
->>>>>>> f2a6d8f63ca989c96c3542592626967af8149708
                     });
                 }
             }
             );
-<<<<<<< HEAD
     });
     $("a.hapus").click(function (e) {
         e.preventDefault();
@@ -63,7 +58,5 @@ $(function () {
                 }
             });
     });
-=======
-    })
->>>>>>> f2a6d8f63ca989c96c3542592626967af8149708
-})
+    });
+// })

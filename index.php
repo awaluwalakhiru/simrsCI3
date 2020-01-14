@@ -1,4 +1,5 @@
 <?php
+header('Access-Control-Allow-Origin:http://localhost/simrs');
 date_default_timezone_set('Asia/Jakarta');
 /**
  * CodeIgniter

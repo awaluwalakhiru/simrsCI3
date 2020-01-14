@@ -53,7 +53,7 @@
                             <p><?php echo $user->biografi; ?></p>
                         </div>
                         <div class="card-footer text-center">
-                            <div class="font-weight-bold mb-2">Follow Ujang On</div>
+                            <div class="font-weight-bold mb-2">Follow <?php echo html_escape(ucfirst($user->nama_depan)); ?> On</div>
                             <a href="http://<?php echo html_escape($user->facebook) ?>" class="btn btn-social-icon btn-facebook mr-1">
                                 <i class="fab fa-facebook-f"></i>
                             </a>
